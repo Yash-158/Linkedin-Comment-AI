@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LinkedIn Comment Generator</title>
+    <style>
+        body {
+            width: 400px;
+            padding: 16px;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .post-preview {
+            padding: 12px;
+            background: #f3f6f8;
+            border-radius: 8px;
+            font-size: 14px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .post-preview .caption {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #0a66c2;
+        }
+        .post-preview .content {
+            color: #666;
+        }
+        .comment-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .comment-box {
+            width: 100%;
+            min-height: 100px;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            resize: vertical;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        .hint-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        .primary-button {
+            background-color: #0a66c2;
+            color: white;
+        }
+        .primary-button:hover {
+            background-color: #004182;
+        }
+        .secondary-button {
+            background-color: #f3f6f8;
+            color: #666;
+        }
+        .secondary-button:hover {
+            background-color: #e1e9ee;
+        }
+        .button-group {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+        .loading {
+            text-align: center;
+            color: #666;
+        }
+        .error {
+            color: #dc2626;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        .no-post {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="postContent" class="post-preview">
+            <div class="no-post">Select a post to generate a comment</div>
+        </div>
+        
+        <div class="comment-section">
+            <input type="text" id="hintInput" class="hint-input" placeholder="Add hints for comment generation (optional)">
+            
+            <div id="commentArea">
+                <textarea id="commentBox" class="comment-box" placeholder="Generated comment will appear here..." readonly></textarea>
+                
+                <div class="button-group">
+                    <button id="regenerateBtn" class="button secondary-button">Regenerate</button>
+                    <button id="confirmBtn" class="button primary-button">Use Comment</button>
+                </div>
+            </div>
+            
+            <div id="loading" class="loading" style="display: none;">
+                Generating comment...
+            </div>
+            
+            <div id="error" class="error" style="display: none;"></div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html> 
